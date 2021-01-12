@@ -21,7 +21,7 @@ init() {
 
   : "${REPO_BASE_BRANCH:='master'}"
   : "${REPO_TARGET_DIR:='.'}"
-  : "${REPO_TARGET_BRANCH:="auto-update/${REPO_BASE_BRANCH}"}"
+  : "${REPO_TARGET_BRANCH:="auto-update/$REPO_BASE_BRANCH"}"
   : "${COMMIT_AUTHOR:='Auto Cross Pull Requester'}"
   : "${COMMIT_EMAIL:='noreply@github.com'}"
   : "${COMMIT_MESSAGE:='Auto update'}"
@@ -41,6 +41,8 @@ clone() {
   local new_item; new_item="${REPO_TARGET_DIR}/$(basename "${ITEM}")"
   local -r url="https://x-access-token:${GH_TOKEN}@github.com/${REPO_OWNER}/${REPO}.git"
 
+  echo "REPO_TARGET_BRANCHREPO_TARGET_BRANCHREPO_TARGET_BRANCHREPO_TARGET_BRANCHREPO_TARGET_BRANCHREPO_TARGET_BRANCHREPO_TARGET_BRANCH"
+  echo "${REPO_TARGET_BRANCH}"
   echo 'Cloning destination repository'
   git clone "${url}" "${clone_dir}"
   cp -r "${ITEM}" "${clone_dir}/${new_item}"
